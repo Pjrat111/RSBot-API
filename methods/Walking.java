@@ -146,4 +146,45 @@ public class Walking {
 				tile.getPlane()
 		);
 	}
+	
+	/**
+	 * 
+	 * @param tilepath The TilePath to randomize
+	 * @param xrandom The x offset
+	 * @param yrandom The y offset
+	 * @return A new TilePath that has the x of every tile in the path randomized by the x offset, and every y in the path by the y offset
+	 */
+	
+		public static TilePath randomizePath(TilePath tilepath, int xrandom, int yrandom) {
+		List<Tile> tiles = new ArrayList<Tile>();
+		for (Tile tile : tilepath.toArray()) {
+			tile = new Tile(tile.getX() + Random.nextInt(-xrandom, xrandom),
+					tile.getY() + Random.nextInt(-yrandom, yrandom),
+					tile.getPlane());
+			tiles.add(tile);
+		}
+		Tile[] randomArray = new Tile[] {};
+		return new TilePath(tiles.toArray(randomArray));
+
+	}
+	
+	/**
+	 * 
+	 * @param tilepath The TilePath to randomize
+	 * @param random the x and y offset
+	 * @return A new TilePath that has the x and y of every tile in the path randomized by the offset
+	 */
+	
+		public static TilePath randomizePath(TilePath tilepath, int random) {
+		List<Tile> tiles = new ArrayList<Tile>();
+		for (Tile tile : tilepath.toArray()) {
+			tile = new Tile(tile.getX() + Random.nextInt(-random, random),
+					tile.getY() + Random.nextInt(-random, random),
+					tile.getPlane());
+			tiles.add(tile);
+		}
+		Tile[] randomArray = new Tile[] {};
+		return new TilePath(tiles.toArray(randomArray));
+
+	}
 }
